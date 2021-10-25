@@ -18,11 +18,11 @@ public class UserController {
     @GetMapping
     public String getUser()
     {
-        ;
+        return null;
     }
 
     @PostMapping
-    public String createUser(@RequestBody UserDetailsRequestModel userDetails)
+    public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails)
     {
         UserRest returnValue = new UserRest();
 
@@ -30,7 +30,9 @@ public class UserController {
         BeanUtils.copyProperties(userDetails, userDto);
 
         UserDto createdUser = userService.createUser(userDto);
-        BeanUtils.copyProperties (createUser, returnValue);
+        BeanUtils.copyProperties (createdUser, returnValue);
+
+        return returnValue;
 
     }
 
@@ -41,10 +43,9 @@ public class UserController {
     }
 
     @DeleteMapping
-
+    public String deleteUser()
     {
         return "delete user was called";
     }
-    pub
 
 }
