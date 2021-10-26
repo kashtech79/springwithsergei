@@ -3,20 +3,17 @@ package com.appsdeveloperblog.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity(name="users")
+@Entity
 @Getter
 @Setter
-
-public class UserEntity implements Serializable {
+@Table(name = "users")
+public class UserEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(nullable=false)
@@ -36,8 +33,10 @@ public class UserEntity implements Serializable {
 
     private String emailVerificationToken;
 
-    @Column(nullable=false)
+//    @Column(nullable = false, columnDefinition = "boolean default false")
     private Boolean emailVerificationStatus = false;
+
+
 
 
 }
