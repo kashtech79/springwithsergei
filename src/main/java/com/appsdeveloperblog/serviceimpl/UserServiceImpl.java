@@ -8,6 +8,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -21,8 +23,8 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity = new UserEntity();
         BeanUtils.copyProperties(user, userEntity);
 
-//        userEntity.setUserId("Test123");
-//        userEntity.setEncryptedPassword("123");
+        userEntity.setUserId(UUID.randomUUID().toString());
+        userEntity.setEncryptedPassword("123");
 
         UserEntity storedUserDetails = userRepository.save(userEntity);
 
